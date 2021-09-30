@@ -126,3 +126,4 @@ reg_income_exp["Region"] [reg_income_exp["Region"] == 3] <- "South"
 reg_income_exp["Region"] [reg_income_exp["Region"] == 4] <- "West"
 reg_income_exp
 plot(reg_income_exp)
+
