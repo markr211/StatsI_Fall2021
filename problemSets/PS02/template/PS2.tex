@@ -110,16 +110,22 @@
 4) Calculate expected value for lower class 'not stopped' cell:  
 15/42*21 = fe 7.5
 
-5) Use function to calculate t stat: 
-14 - 13.5/13.5 squared + 7 - 7.5/7.5 squared = 1.37 = 4.44 = 5.81
+5) Use function to calculate t stat: 14 - 13.5/13.5 squared + 7 - 7.5/7.5 squared = 1.37 = 4.44 = 5.81
+
+ANS = 5.81
 	
- ANS = 5.81
 	
 	
 	\item [(b)]
 	Now calculate the p-value from the test statistic you just created (in \texttt{R}).\footnote{Remember frequency should be $>$ 5 for all cells, but let's calculate the p-value here anyway.}  What do you conclude if $\alpha = .1$?\\
-	Use Code...
-	- pchsiq(5.81, df = (rows-1) (columns-1), lower.tail = FALSE)
+
+PART 2: Calculate p-value from t-stat. Interpret it. Use pt() function
+
+- 2*pt(5.81, df = 2, lower.tail = FALSE)
+
+ ANS = 0.03
+
+
 	\newpage
 	\item [(c)] Calculate the standardized residuals for each cell and put them in the table below.
 	\vspace{1cm}
@@ -323,6 +329,14 @@ ANS = 118.20 and 170.47
 	\end{itemize}
 			\vspace{6cm}
 	\item Use the \texttt{predict()} function in \texttt{R} to (1) predict an individual fruitfly's lifespan when \texttt{thorax}=0.8 and (2) the average \texttt{lifespan} of fruitflies when \texttt{thorax}=0.8 by the fitted model. This requires that you compute prediction and confidence intervals. What are the expected values of lifespan? What are the prediction and confidence intervals around the expected values? 
+	
+	PART 6: Use predict function. 58th variable in thorax = 0.8mm. Subset thorax to 58th variable and use predict function
+	
+	- newthorax <- thorax[58]
+
+- class(longthorregression)
+	
+	- predict(longthorregression, newdata = newthorax)
 	
 			\vspace{6cm}
 	\item	For a sequence of \texttt{thorax} values, draw a plot with their fitted values for \texttt{lifespan}, as well as the prediction intervals and confidence intervals.

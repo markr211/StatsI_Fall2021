@@ -8,8 +8,9 @@
 # 5) Use function to calculate t stat: 14 - 13.5/13.5 squared + 7 - 7.5/7.5 squared = 1.37 = 4.44 = 5.81
 # ANS = 5.81
 
-# PART 2: Calculate p-value from t-stat. Interpret it
-pchsiq(5.81, df = (rows-1) (columns-1), lower.tail = FALSE)
+# PART 2: Calculate p-value from t-stat. Interpret it. Use pt() function
+2*pt(5.81, df = 2, lower.tail = FALSE)
+### ANS = 0.03
 
 # PART 3: Calculate standardized residuals for each cell and place in table.
 # Use formula for each cell to get standardized residuals.
@@ -81,4 +82,7 @@ summary(longthor_regression)
 confint(longthor_regression, level = 0.90)
 # ANS = 118.20 and 170.47
 
-## PART 6: 
+## PART 6: Use predict function. 58th variable in thorax = 0.8mm. Subset thorax to 58th variable and use predict function
+new_thorax <- thorax[58]
+class(longthor_regression)
+predict(longthor_regression, newdata = new_thorax)
