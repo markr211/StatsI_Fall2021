@@ -97,14 +97,39 @@
 	
 	\item [(a)]
 	Calculate the $\chi^2$ test statistic by hand (even better if you can do "by hand" in \texttt{R}).\\
-	\vspace{7cm}
+	\vspace{1cm}
+	
+	Steps taken as follows...
+	
+	1) Take 'not stopped' cells from upper and lower class rows to caluclate t stat
+	
+	2) Observed value for upper class = 14. Observed value for lower class = 7
+
+ 3) Calculate expected value for upper class first using function: 27/42*21 = fe 13.5
+
+4) Calculate expected value for lower class 'not stopped' cell:  
+15/42*21 = fe 7.5
+
+5) Use function to calculate t stat: 
+14 - 13.5/13.5 squared + 7 - 7.5/7.5 squared = 1.37 = 4.44 = 5.81
+	
+ ANS = 5.81
+	
 	
 	\item [(b)]
 	Now calculate the p-value from the test statistic you just created (in \texttt{R}).\footnote{Remember frequency should be $>$ 5 for all cells, but let's calculate the p-value here anyway.}  What do you conclude if $\alpha = .1$?\\
-	
+	Use Code...
+	- pchsiq(5.81, df = (rows-1) (columns-1), lower.tail = FALSE)
 	\newpage
 	\item [(c)] Calculate the standardized residuals for each cell and put them in the table below.
 	\vspace{1cm}
+	
+	Calculate standardized residuals for each cell and place in table.
+	
+	Use formula for each cell to get standardized residuals.
+	
+	- ANS for Upper Class = O.76, -3.32, 2.82
+	- ANS for Lower Class = -0.57, 2.46, 2.11
 	
 	\begin{table}[h]
 		\centering
@@ -112,9 +137,9 @@
 			& Not Stopped & Bribe requested & Stopped/given warning \\
 			\\[-1.8ex] 
 			\hline \\[-1.8ex]
-			Upper class  &  &  &  \\
+			Upper class  & 0.76 & -3.32 & 2.82 \\
 			\\
-			Lower class &  &   &   \\
+			Lower class & 0.57 & 2.46  & 2.11  \\
 			
 		\end{tabular}
 	\end{table}
@@ -122,6 +147,10 @@
 	
 	\vspace{7cm}
 	\item [(d)] How might the standardized residuals help you interpret the results?  
+	
+	Standardised residuals differentiate expected and oberved values. Expected values come from the null hypothesis.
+	
+	They are important to interpretation of data by showing how important or unimportant each cell is to the overall result (i.e. how much a cell impacts a statistic  in a dataset).
 	
 \end{enumerate}
 \newpage
@@ -136,18 +165,54 @@ Chattopadhyay and Duflo were interested in whether women promote different polic
 	\vspace{.5cm}
 	\centering
 	\label{fig:women_desc}
-	\includegraphics[width=1.1\textwidth]{../../../graphics/women_desc.png}
+
 \end{figure}		
 
 \newpage
 \begin{enumerate}
 	\item [(a)] State a null and alternative (two-tailed) hypothesis. 
+	 Read the csv file and name it economicdata
+	economicdata <- read.csv("https://raw.githubusercontent.com/kosukeimai/qss/master/PREDICTION/women.csv")
+	economicdata
+	
+	 PART 1: State Null and Alternative Hypothesis. 
+	 
+	 Interested only in reserved and water variables as we mean to test the effect of the reservation policy on new water facilities.
+	
+	Subset data to just reserved and water variables
+	- reserved <- economicdata[, 3] 
+	
+	- reserved    
+	
+	- water <- economicdata[, 6]
+	
+	- water
+	
+	Find avg no of new water services to make data assumption and form null and alt hypothesis
+	- mean(water) = 17.84
+	
+	- sd(water) = SD is 33.68, quite high.
+	
+	 Null Hypothesis = The number of new water facilities will be less than 17.84 in regions with the reservation policy
+	
+	Alt Hypothesis = The no of new water facilities will be greater than 17.84 in regions where the reservation policy is introduced.
 	
 	\vspace{6cm}
 	\item [(b)] Run a bivariate regression to test this hypothesis in \texttt{R} (include your code!).
-	
+
+Code is as follows to run regression and find coefficient estimate
+
+	- reservedwater <- lm(water ~ reserved)
+	- reservedwater =  Intercept = 14.74, slope = 9.25
+- 	summary(reservedwater)
+
 	\vspace{6cm}
 	\item [(c)] Interpret the coefficient estimate for reservation policy. 
+	
+	Find Coefficient Estimate. ANS = 14.74 (see above)
+	
+	Less than 17.84. Cannot reject the null hyothesis 
+	
 \end{enumerate}
 
 \newpage
@@ -174,21 +239,81 @@ There is a physiological cost of reproduction for fruit flies, such that it redu
 	\item
 	Import the data set and obtain summary statistiscs and examine the distribution of the overall lifespan of the fruitflies.  
 
+ PART ONE: Obtain summary Stats on Lifespan
+ 
+ Import fruitfly.csv
+
+- data <- read.csv("http://stat2.org/datasets/FruitFlies.csv")
+
+- data
+
+Conduct Summary Statistics on longevity incl. mean, sd, etc.
+
+- longevity <- data[, 4]
+- mean(longevity)
+- sd(longevity)
+
+Mean longevity = 57.44 days, sd = 17.56, sample size = 125
+
 \newpage
 	\item
 	Plot \texttt{lifespan} vs \texttt{thorax}. Does it look like there is a linear relationship? Provide the plot. What is the correlation coefficient between these two variables?
 		\vspace{6cm}
 	\item
+	
+	PART 2: Plot Lifespan and Thorax and Comment Upon Relation. Find Correlation Coefficient
+	
+	- lifespanthorax <- data[, 5, 4]
+
+	- lifespanthorax
+
+	- plot(lifespanthorax)
+
+	- thorax <- data[, 5]
+	
+	Find correlation coefficient. ANS = 0.64
+	cor.test(longevity, thorax)
+
+ Corrleation coefficient 0.64 close enough to 1 to have some evidence of positive relationship between thorax and lifespan.
+	
 	Regress \texttt{lifespan} on \texttt{thorax}.  Interpret the slope of the fitted model.
 			\vspace{6cm}
 	\item
-	Test for a significant linear relationship between  \texttt{lifespan} and \texttt{thorax}. Provide and interpret your results of your test.
 	
+	PART 3: Use lm() function to regress longevity on thorax. Find slope.
+
+	- longthorregression <- lm(longevity ~ thorax)
+
+- 	summary(longthorregression)
+
+ Intercept = -61.05. Slope for line = 144.33. Slope greater than 0. Therefore, there is a positive relationship between x and y variables.
+ 
+	Test for a significant linear relationship between  \texttt{lifespan} and \texttt{thorax}. Provide and interpret your results of your test.
+
+PART 4: Run and interpet significance test on lifesoan and thorax
+
+Use summary() function of longthorregression to find p.value
+
+- summary(longthorregression)
+
+ P value less than 0.5. Relationship significant between lifespan and thorax.
+ 	
 \newpage
 	\item
 	
 	Provide the 90\% confidence interval for the slope of the fitted model.
 	
+Find 90 Confidence Interval
+	
+Use summary() function to gather info to get 90 confidence interval...
+
+BY HAND Slope = 144.33. Standard error of slope = 15.77. Find t stat to calculate by hand
+
+Use confint() function instead. Faster and more efficient.
+	
+- confint(longthorregression, level = 0.90)
+
+ANS = 118.20 and 170.47
 			\vspace{.5cm}
 	\begin{itemize}
 		\item
