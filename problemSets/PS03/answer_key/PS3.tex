@@ -106,6 +106,9 @@
 		- plot(votesharedifflog)
 		
 		- abline(votesharedifflog)
+		
+	Moderately positive/null relation observed in plot
+		
 		\item Save the residuals of the model in a separate object.	\vspace{7cm}
 		
 		Use residuals() function in R on votesharedifflog
@@ -150,6 +153,8 @@
 	-	plot(difflogpresvote)
 	
 	-	abline(difflogpresvote)
+		
+		Moderately positive/null relation observed in plot
 		
 		\item Save the residuals of the model in a separate object.	\vspace{5cm}
 		
@@ -198,6 +203,8 @@
 		
 		-	abline(presvotevoteshare)
 		
+		Moderately positive/null relation observed in plot
+		
 		\item Write the prediction equation.
 		
 		Equation is y = 0.2036 (intercept) + 0.5304 (slope) * random x 
@@ -239,6 +246,8 @@
 		
 	-	abline(combresiduals)
 	
+	Strongly positive relation between residuals indicated by plot
+	
 		\item Write the prediction equation.
 		
 		Add intercept and slope and multipy slope by random x value (i.e. residual2 value)
@@ -274,6 +283,11 @@ Intercept = 0.44864, slopes = 0.03554 and 0.25688
 
 		\item Write the prediction equation.	\vspace{5cm}
 		
+		Use x values from sample. E.g. First difflog value 0.570 and first presvote value 0.527
+
+	-	0.459+0.036*0.570+0.257*0.527
+	
+	Predicted y value = 0.615
 		
 		\item What is it in this output that is identical to the output in Question 4? Why do you think this is the case?%	\vspace{5cm}
 	%	\item Reflect on your finding. Don't write anything. Just think about it.
