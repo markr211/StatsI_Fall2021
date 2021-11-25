@@ -21,7 +21,7 @@ prestige_regression <- lm(prestige ~ professionals+income, data=data_prestige)
 summary(prestige_regression)
 plot(prestige_regression)
 abline(prestige_regression)
-# Intercept = 27.863, prof slope = 17.761, income slope = 0.002
+# Intercept = 27.863, proffesion slope = 17.761, income slope = 0.002
 
 # (c): Write the prediction equation based on the result.
 # Equation = y = 27.863+17.761*x1+0.002*x2
@@ -36,11 +36,11 @@ y
 # (i.e. it holds 1 as value)
 
 # (d): Interpret the coefficient for income.
-# Coefficient = 0.02. Close to zero coefficient signals a null relationship between 
+# Coefficient = 0.02. Close to zero coefficient signals close to a null relationship between 
 # income and prestige.
 
 # (e): Interpret the coefficient for professional.
-# Coefficient = 17.761. Indicates strong relationship between professionals and prestige. 
+# Coefficient = 17.761. Indicates very strong relationship between one's profession and their prestige score. 
 
 # (f): What is the effect of a $1,000 increase in income on 
 # prestige score for professional occupations? 
@@ -54,7 +54,8 @@ y1 <- 27.863+17.761*1+0.002*13351
 y1 # Pineo-Porter prestige score = 72.326 when income is increased by 1000.
 # This is compared with 70.326 from answer to (c). Therefore 1000 income increase associated
 # with 2 point increase in prestige points. 
-# Prestige therefore increases by a little bit if income is increased.
+# Prestige therefore increases by a little bit if income is increased. This relates to the slope close
+# to zero referred to in part (d). Income therefore likely weakly explains prestige in this model.
 
 # (g): What is the effect of changing one’s occupations from non-professional to professional 
 # when her income is $6,000? We are interested in the marginal effect of professional jobs 
@@ -65,7 +66,8 @@ y2 # ANS = 57.624 prestige points
 27.863+17.761*0+0.002*6000 # ANS = 39.863 prestige points
 # Subtract both prestige points to get effect of profession on prestige at same income rate of 6,000
 57.624 - 39.863
-# ANS = 17.761. Therefore, even if they earn the same income of 6,000, a professional is likely to recieve 
+# ANS = 17.761. This is the same value as the slope for professions.
+# Therefore, even if they earn the same income of 6,000, a professional is likely to recieve 
 # 17.761 more prestige points than blue and white collar workers. 
 # Therefore, this indicates that the impact of profession is very large on prestige relative to income. 
 

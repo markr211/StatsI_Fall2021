@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.19)  25 NOV 2021 19:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.19)  25 NOV 2021 19:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -894,12 +894,12 @@ LaTeX Info: Redefining \nameref on input line 69.
 
 {/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
  [4] [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 216--217
+Underfull \hbox (badness 10000) in paragraph at lines 219--220
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--220
+Underfull \hbox (badness 10000) in paragraph at lines 221--223
 
  []
 
@@ -929,7 +929,7 @@ ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texli
 ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texliv
 e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive
 /2021/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on PS4.pdf (10 pages, 144364 bytes).
+Output written on PS4.pdf (10 pages, 144580 bytes).
 PDF statistics:
  111 PDF objects out of 1000 (max. 8388607)
  85 compressed objects within 1 object stream
