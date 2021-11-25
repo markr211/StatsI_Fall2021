@@ -114,5 +114,5 @@ y2 # ANS = 57.624 prestige points
 # 0.094 = 9.4%
 # Closer to 100%, the more the model explains outcome variable variance
 # Therefore, model explains only 9.4% of vote share  variance
-# Indicates that other factors that are not modeled are likley  have a greater effect on vote share than
+# Indicates that other factors that are not modeled are likley have a greater effect on vote share than
 # yard signs. This is because 90.6% of vote share variance is not explained by yard signs.  
